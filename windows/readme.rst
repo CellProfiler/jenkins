@@ -12,6 +12,7 @@ Install the following curated dependencies:
 * jdk-8u65-windows-x64.exe
 * Git-2.6.4-64-bit.exe (do not install explorer extensions, add GIT to path)
 * cmake-3.4.0-win32-x86.exe (add cmake to path)
+* isetup-5.5.6-unicode.exe
 
 Unzip `jenkins-1.642.zip` and run jenkins.msi
 
@@ -26,3 +27,12 @@ dependencies.
 * Run the script, `jenkins_packages_build.bat`.
 * cd to the build-ilastik-on-windows directory
 * `python setup.py build`
+
+If you have the license to redistribute the MSVCRT 9.0 DLL, you can copy the
+files from the Microsoft.VC90.CRT directory to the build machine and
+include them in the MSI with a build command like:
+
+    python setup.py py2exe --msvc-redist=<path-to-Microsoft.VC90.CRT> msi
+
+If you have MSVC 9.0 installed on your machine (by some miracle), the setup
+script will find the redistributables automatically.
